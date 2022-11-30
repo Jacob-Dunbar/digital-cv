@@ -1,9 +1,7 @@
-.canvas {
-}
-
 .canvasCont1 {
   height: 100vh;
-  width: 70vw;
+  width: 60vw;
+  background-color: aqua;
 }
 
 .canvasCont2 {
@@ -11,7 +9,13 @@
   width: 70vw;
 }
 
+.canvasCont3 {
+  background-color: aquamarine;
+  height: 100vh;
+  width: 80vw;
+}
+
 .page {
   display: flex;
-  width: 200vw;
+  width: 300vw;
 }

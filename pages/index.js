@@ -5,6 +5,7 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import Mono1 from "../Components/Mono1-engravedexport";
 import Mono2 from "../Components/Mono2engraved4export";
+import Mono3 from "../Components/Mono3engravedexport";
 import { Sparkles } from "@react-three/drei";
 
 // import Sparkles from "@react-three/drei";
@@ -27,7 +28,7 @@ export default function Home() {
               speed={0.75}
               opacity={0.5}
               size={5}
-              scale={7}
+              scale={5}
               noise={20}
               color={"#d5fdeb"}
             />
@@ -44,7 +45,24 @@ export default function Home() {
               speed={0.75}
               opacity={0.5}
               size={5}
-              scale={7}
+              scale={5}
+              noise={20}
+              color={"#d5fdeb"}
+            />
+          </Suspense>
+        </Canvas>
+      </div>
+      <div className={css.canvasCont3}>
+        <Canvas className={css.canvas}>
+          <Suspense>
+            <Mono3 />
+            <ambientLight intensity={0.2} />
+            <Sparkles
+              count={15}
+              speed={0.75}
+              opacity={0.5}
+              size={5}
+              scale={5}
               noise={20}
               color={"#d5fdeb"}
             />
