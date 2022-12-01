@@ -3,16 +3,11 @@ import Link from "next/link";
 import css from "../styles/Home.module.css";
 import { Canvas } from "@react-three/fiber";
 import { Suspense, useEffect, useRef, useState } from "react";
-
 import Mono1and2 from "../Components/Monoliths1and2glb";
 import Mono3 from "../Components/Monoliths3";
 import Mono4 from "../Components/Monoliths4";
-
-import { MapControls, Float } from "@react-three/drei";
+import { MapControls, Loader } from "@react-three/drei";
 import { useSpring, animated } from "@react-spring/three";
-// import { useSpring, a } from "@react-spring/three";
-
-// import Sparkles from "@react-three/drei";
 
 export default function Home() {
   const mapControlsRef = useRef(null);
@@ -32,7 +27,7 @@ export default function Home() {
   console.log(evilMode);
 
   return (
-    <div className={css.page}>
+    <>
       <Head>
         <title>Jacob Dunbar CV</title>
         <meta
@@ -69,6 +64,7 @@ export default function Home() {
           </div>
         </div>
       )}
+
       <div className={css.superCont}>
         {!introOpen && (
           <button className={css.buttonPerm}>
@@ -78,20 +74,22 @@ export default function Home() {
           </button>
         )}
         <Canvas>
-          <MapControls
-            ref={mapControlsRef}
-            enableZoom={false}
-            enableRotate={false}
-          />
+          <Suspense fallback={null}>
+            <MapControls
+              ref={mapControlsRef}
+              enableZoom={false}
+              enableRotate={false}
+            />
+            <perspectiveCamera makeDefault position={[0, 0, 0]} />
+            <animated.ambientLight intensity={spring.intensity} />
 
-          <perspectiveCamera makeDefault position={[0, 0, 0]} />
-          <animated.ambientLight intensity={spring.intensity} />
-          <Mono1and2 setEvilMode={setEvilMode} evilMode={evilMode} />
-          <Mono3 setEvilMode={setEvilMode} evilMode={evilMode} />
-          <Mono4 setEvilMode={setEvilMode} evilMode={evilMode} />
-          {/* <SuperMono2 setEvilMode={setEvilMode} evilMode={evilMode} /> */}
+            <Mono1and2 setEvilMode={setEvilMode} evilMode={evilMode} />
+            <Mono3 setEvilMode={setEvilMode} evilMode={evilMode} />
+            <Mono4 setEvilMode={setEvilMode} evilMode={evilMode} />
+          </Suspense>
         </Canvas>
+        <Loader />
       </div>
-    </div>
+    </>
   );
 }
