@@ -4,7 +4,6 @@ import css from "../styles/Home.module.css";
 import { Canvas } from "@react-three/fiber";
 import { Suspense, useEffect, useRef, useState } from "react";
 
-import SuperMono2 from "../Components/Monoliths-super2";
 import Mono1and2 from "../Components/Monoliths1and2glb";
 import Mono3 from "../Components/Monoliths3";
 import Mono4 from "../Components/Monoliths4";
