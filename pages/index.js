@@ -74,21 +74,23 @@ export default function Home() {
           </button>
         )}
         <Canvas>
+          <MapControls
+            ref={mapControlsRef}
+            enableZoom={false}
+            enableRotate={false}
+          />
+          <perspectiveCamera makeDefault position={[0, 0, 0]} />{" "}
           <Suspense fallback={null}>
-            <MapControls
-              ref={mapControlsRef}
-              enableZoom={false}
-              enableRotate={false}
-            />
-            <perspectiveCamera makeDefault position={[0, 0, 0]} />
             <animated.ambientLight intensity={spring.intensity} />
-
+          </Suspense>
+          <Suspense fallback={null}>
             <Mono1and2 setEvilMode={setEvilMode} evilMode={evilMode} />
-            <Mono3 setEvilMode={setEvilMode} evilMode={evilMode} />
+          </Suspense>
+          <Mono3 setEvilMode={setEvilMode} evilMode={evilMode} />
+          <Suspense fallback={null}>
             <Mono4 setEvilMode={setEvilMode} evilMode={evilMode} />
           </Suspense>
         </Canvas>
-        <Loader />
       </div>
     </>
   );
