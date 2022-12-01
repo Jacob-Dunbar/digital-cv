@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import css from "../styles/Home.module.css";
 import { Canvas } from "@react-three/fiber";
-import { Suspense, useEffect, useRef, useState } from "react";
+import { Suspense, use, useEffect, useRef, useState } from "react";
 import Mono1 from "../Components/Monoliths1";
 import Mono2 from "../Components/Monoliths2";
 import Mono3 from "../Components/Monoliths3";
@@ -16,16 +16,21 @@ export default function Home() {
   const [introOpen, setIntroOpen] = useState(true);
   const { active, progress, errors, item, loaded, total } = useProgress();
   const [Loading, setLoading] = useState(true);
-  const [progressDisp, setProgressDisp] = useState(progress);
+  const [progressDisp, setProgressDisp] = useState(0);
+
   const spring = useSpring({
     intensity: evilMode ? 0 : 0.2,
   });
 
+  useEffect;
+
   useEffect(() => {
     if (progress < 100) {
       setLoading(true);
+      setProgressDisp(progress);
     } else if (progress === 100) {
       setLoading(false);
+      setProgressDisp(progress);
     }
   }, [progress]);
 
