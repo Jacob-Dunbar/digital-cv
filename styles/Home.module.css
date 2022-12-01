@@ -1,7 +1,6 @@
 .canvasCont1 {
   height: 100vh;
   width: 60vw;
-  background-color: aqua;
 }
 
 .canvasCont2 {
@@ -10,12 +9,109 @@
 }
 
 .canvasCont3 {
-  background-color: aquamarine;
   height: 100vh;
   width: 80vw;
 }
 
+.canvasCont4 {
+  height: 100vh;
+  width: 90vw;
+}
+
 .page {
   display: flex;
-  width: 300vw;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+
+.superCont {
+  height: 100vh;
+  width: 100vw;
+}
+
+.intro {
+  width: 100vw;
+  height: 100vh;
+
+  backdrop-filter: blur(30px);
+
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 30;
+}
+
+.modal {
+  padding: 35px;
+
+  width: 380px;
+  background-color: rgb(31, 31, 31);
+  border-radius: 20px;
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+  color: rgb(214, 221, 215);
+  gap: 25px;
+}
+
+.heading {
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+  margin: 0;
+  font-size: 1.7rem;
+}
+
+.para {
+  font-weight: 300;
+  text-align: center;
+  line-height: 1.3;
+  letter-spacing: 0.05rem;
+  margin: 0;
+}
+
+.button {
+  padding: 10px 15px;
+  outline: none;
+  background-color: transparent;
+  border: 2px solid #63865a;
+  border-radius: 50px;
+  color: #63865a;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.button:hover {
+  scale: 1.1;
+}
+
+.buttonPerm {
+  position: absolute;
+  bottom: 25px;
+  left: 25px;
+  padding: 10px 15px;
+  outline: none;
+  background-color: transparent;
+  border: 2px solid #63865a;
+  border-radius: 50px;
+  color: #63865a;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  z-index: 30;
+}
+
+.buttonPerm:hover {
+  scale: 1.1;
+}
+
+.textCont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
