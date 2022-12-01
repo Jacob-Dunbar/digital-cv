@@ -3,7 +3,8 @@ import Link from "next/link";
 import css from "../styles/Home.module.css";
 import { Canvas } from "@react-three/fiber";
 import { Suspense, useEffect, useRef, useState } from "react";
-import Mono1and2 from "../Components/Monoliths1and2glb";
+import Mono1 from "../Components/Monoliths1";
+import Mono2 from "../Components/Monoliths2";
 import Mono3 from "../Components/Monoliths3";
 import Mono4 from "../Components/Monoliths4";
 import { MapControls, Loader } from "@react-three/drei";
@@ -24,7 +25,7 @@ export default function Home() {
     }
   }, [mapControlsRef.current]);
 
-  console.log(evilMode);
+  const Loading = "Loading";
 
   return (
     <>
@@ -73,20 +74,24 @@ export default function Home() {
             </Link>
           </button>
         )}
+
         <Canvas>
           <MapControls
             ref={mapControlsRef}
             enableZoom={false}
             enableRotate={false}
           />
-          <perspectiveCamera makeDefault position={[0, 0, 0]} />{" "}
+          <animated.ambientLight intensity={spring.intensity} />
+          <perspectiveCamera makeDefault position={[0, 0, 0]} />
           <Suspense fallback={null}>
-            <animated.ambientLight intensity={spring.intensity} />
+            <Mono1 setEvilMode={setEvilMode} evilMode={evilMode} />
           </Suspense>
           <Suspense fallback={null}>
-            <Mono1and2 setEvilMode={setEvilMode} evilMode={evilMode} />
+            <Mono2 setEvilMode={setEvilMode} evilMode={evilMode} />
           </Suspense>
-          <Mono3 setEvilMode={setEvilMode} evilMode={evilMode} />
+          <Suspense fallback={null}>
+            <Mono3 setEvilMode={setEvilMode} evilMode={evilMode} />
+          </Suspense>
           <Suspense fallback={null}>
             <Mono4 setEvilMode={setEvilMode} evilMode={evilMode} />
           </Suspense>
