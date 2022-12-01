@@ -7,25 +7,27 @@ import Mono1 from "../Components/Monoliths1";
 import Mono2 from "../Components/Monoliths2";
 import Mono3 from "../Components/Monoliths3";
 import Mono4 from "../Components/Monoliths4";
-import { MapControls, Loader } from "@react-three/drei";
+import { MapControls, Loader, useProgress } from "@react-three/drei";
 import { useSpring, animated } from "@react-spring/three";
 
 export default function Home() {
   const mapControlsRef = useRef(null);
   const [evilMode, setEvilMode] = useState(false);
   const [introOpen, setIntroOpen] = useState(true);
-
+  const { active, progress, errors, item, loaded, total } = useProgress();
+  const [Loading, setLoading] = useState(true);
+  const [progressDisp, setProgressDisp] = useState(progress);
   const spring = useSpring({
     intensity: evilMode ? 0 : 0.2,
   });
 
   useEffect(() => {
-    if (!!mapControlsRef.current) {
-      console.log(mapControlsRef.current.position);
+    if (progress < 100) {
+      setLoading(true);
+    } else if (progress === 100) {
+      setLoading(false);
     }
-  }, [mapControlsRef.current]);
-
-  const Loading = "Loading";
+  }, [progress]);
 
   return (
     <>
@@ -59,9 +61,18 @@ export default function Home() {
                 the bottom left corner.
               </p>
             </div>
-            <button className={css.button} onClick={() => setIntroOpen(false)}>
-              Enter
-            </button>
+            {Loading ? (
+              <button className={css.buttonInactive}>
+                Loading {progressDisp.toFixed(0)}%
+              </button>
+            ) : (
+              <button
+                className={css.button}
+                onClick={() => setIntroOpen(false)}
+              >
+                Enter
+              </button>
+            )}
           </div>
         </div>
       )}

@@ -85,6 +85,18 @@
   cursor: pointer;
 }
 
+.buttonInactive {
+  padding: 10px 15px;
+  outline: none;
+  background-color: transparent;
+  border: 2px solid #525252;
+  border-radius: 50px;
+  color: #5a5a5a;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
 .button:hover {
   scale: 1.1;
 }
