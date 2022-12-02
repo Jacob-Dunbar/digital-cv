@@ -3,10 +3,13 @@ import Link from "next/link";
 import css from "../styles/Home.module.css";
 import { Canvas } from "@react-three/fiber";
 import { Suspense, use, useEffect, useRef, useState } from "react";
-import Mono1 from "../Components/Monoliths1";
-import Mono2 from "../Components/Monoliths2";
-import Mono3 from "../Components/Monoliths3";
-import Mono4 from "../Components/Monoliths4";
+import Mono1 from "../Components/Mono1";
+import Mono2 from "../Components/Mono2";
+import Skull from "../Components/Skull";
+import JHead from "../Components/Head";
+import Mono3 from "../Components/Mono3";
+import Mono4 from "../Components/Mono4";
+import Sign from "../Components/Sign";
 import { MapControls, Loader, useProgress } from "@react-three/drei";
 import { useSpring, animated } from "@react-spring/three";
 
@@ -106,10 +109,19 @@ export default function Home() {
             <Mono2 setEvilMode={setEvilMode} evilMode={evilMode} />
           </Suspense>
           <Suspense fallback={null}>
+            <Skull setEvilMode={setEvilMode} evilMode={evilMode} />
+          </Suspense>
+          <Suspense fallback={null}>
             <Mono3 setEvilMode={setEvilMode} evilMode={evilMode} />
           </Suspense>
           <Suspense fallback={null}>
+            <JHead setEvilMode={setEvilMode} evilMode={evilMode} />
+          </Suspense>
+          <Suspense fallback={null}>
             <Mono4 setEvilMode={setEvilMode} evilMode={evilMode} />
+          </Suspense>
+          <Suspense fallback={null}>
+            <Sign setEvilMode={setEvilMode} evilMode={evilMode} />
           </Suspense>
         </Canvas>
       </div>
