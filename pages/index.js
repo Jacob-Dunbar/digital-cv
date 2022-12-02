@@ -28,10 +28,10 @@ export default function Home() {
   useEffect;
 
   useEffect(() => {
-    if (progress < 100) {
+    if (progress < 81) {
       setLoading(true);
       setProgressDisp(progress);
-    } else if (progress === 100) {
+    } else if (progress > 81) {
       setLoading(false);
       setProgressDisp(progress);
     }
@@ -50,7 +50,8 @@ export default function Home() {
       {introOpen && (
         <div className={css.intro}>
           <div className={css.modal}>
-            <h2 className={css.heading}>Jacob Dunbar CV</h2>{" "}
+            <h2 className={css.heading}>Jacob Dunbar</h2>
+            <h1 className={css.gradientHeading}>Digital CV</h1>
             <button className={css.button}>
               <Link href={"./jacobDunbarCV.pdf"} download>
                 Download PDF
@@ -70,9 +71,12 @@ export default function Home() {
               </p>
             </div>
             {Loading ? (
-              <button className={css.buttonInactive}>
-                Loading {progressDisp.toFixed(0)}%
-              </button>
+              <div className={css.loading}>
+                <img className={css.loadingImage} src="/loading.gif" alt="" />
+                <button className={css.buttonInactive}>
+                  Loading {progressDisp.toFixed(0)}%
+                </button>
+              </div>
             ) : (
               <button
                 className={css.button}
